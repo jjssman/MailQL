@@ -4,6 +4,7 @@ import { buildSchema } from 'type-graphql/dist/utils';
 import { DatabaseService } from './Logic/DatabaseService';
 import { ApolloServer } from 'apollo-server';
 import { authChecker } from './Logic/AuthChecker'
+import config from 'config';
 
 (async () => {
 
@@ -15,8 +16,8 @@ import { authChecker } from './Logic/AuthChecker'
   });
 
   // console.log(printSchema(schema));
-  const PORT = 3001
-  const DEBUG = true
+  const PORT = <Number> config.get('Port')
+  const DEBUG = <boolean> config.get('Debug');
 
   // Create the GraphQL server
   const server = new ApolloServer({

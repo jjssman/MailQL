@@ -98,7 +98,7 @@ interface Email {
 export class EmailInput implements Email{
 
     @id({name: 'id', dbtype: 'INTEGER NOT NULL'})
-    @Field(type => ID)
+    @Field(type => ID, { nullable: true })
     id?: Number;
 
     @field({name: 'recipient', dbtype: 'TEXT NOT NULL'})
@@ -185,7 +185,7 @@ export class EmailInput implements Email{
 @ObjectType()
 export class EmailOutput implements Email{
 
-    @Field(type => ID, { description: '' })
+    @Field(type => ID, { description: 'Unique id of the email.' })
     id!: Number;
 
     @Field({ description: 'The inbox which received the email.' })

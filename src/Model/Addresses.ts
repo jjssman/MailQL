@@ -7,16 +7,16 @@ export class Addresses {
     /**
      * An array with address details.
      */
-    @Field(type => [EmailAddress])
+    @Field(type => [EmailAddress], {description: 'An array with address details.'})
     value!: EmailAddress[];
     /**
      * A formatted address string for HTML context.
      */
-    @Field()
+    @Field({ description: 'A formatted address string for HTML context.' })
     html!: string;
     /**
      * A formatted address string for plaintext context.
      */
-    @Field()
+    @Field({ description: 'A formatted address string for plaintext context.' })
     text!: string;
 }

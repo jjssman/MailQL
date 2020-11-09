@@ -1,5 +1,8 @@
 import { BaseDAO, schema, SqlDatabase } from "sqlite3orm";
 import { EmailInput } from "../Model/Email";
+import path from 'path';
+import fs from 'fs';
+import config from 'config';
 
 export class DatabaseService {
 
@@ -12,7 +15,14 @@ export class DatabaseService {
 
     public static async init(){
         DatabaseService.sqldb = new SqlDatabase();
-        await DatabaseService.sqldb.open('./db/emails.sqlite3');
+
+        const DB_File = <string> config.get('DB_File');
+        const dbDir = path.dirname(DB_File);
+        if(!fs.existsSync(dbDir)){
+            fs.mkdirSync(dbDir, { recursive: true });
+        }
+        await DatabaseService.sqldb.open(DB_File);
+
         await schema().createTable(DatabaseService.sqldb, 'emails');
     }
 
