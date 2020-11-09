@@ -1,0 +1,6 @@
+{
+    "DB_File": "./db/emails.sqlite3",
+    "Port": 3001,
+    "Debug": true,
+    "Use_Https": false
+}

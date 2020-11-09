@@ -1,7 +1,7 @@
 node_modules
 build
 db
-config
+config/*
 !config/default.json
 npm-debug.log
 .env
