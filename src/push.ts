@@ -8,12 +8,12 @@ import config from 'config';
 
 (async () => {
 
-    //const rawEmail = fs.readFileSync('./db/email.txt')
+    // const rawEmail = fs.readFileSync('./db/email.txt')
     const rawEmail = fs.readFileSync(0, 'utf-8');
     const parsedEmail = await simpleParser(rawEmail);
     let email = EmailInput.fromParsedEmail(parsedEmail);
 
-    const mutation = gql`
+    const mutation = gql` 
         mutation InsertEmail($email: EmailInput!){
             pushEmail(email: $email)
         }
